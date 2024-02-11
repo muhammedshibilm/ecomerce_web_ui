@@ -1,6 +1,6 @@
 
 function createProducts(val){
-    return `<div class=" col-3 my-2 mx-2 card "  style="width: 18rem;">
+    return `<div class=" col-3 my-2 mx-2 card  "  style="width: 18rem;">
     <img class="card-img-top" height="250px" style="object-fit: contain"  src="${val.image}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">${val.title}</h5>
@@ -14,15 +14,18 @@ function createProducts(val){
 async function getProduct() {
     const response  = await fetch("https://fakestoreapi.com/products")
     const  products = await  response.json()
-    console.log(products)
     let productListContainer='';
     for (let vs of products) {
      const  productcontainer = createProducts(vs);
      productListContainer=productListContainer+productcontainer;
     } 
-    console.log(productListContainer)
+    // console.log(productListContainer)
     let product = document.getElementById("product");
     product.innerHTML=productListContainer;
     
 }
 getProduct()
+
+const date = new Date()
+let year_id = document.getElementById('year')
+year_id.innerHTML=`<p class='text-center '>&copy; ${date.getFullYear()} </p>`
